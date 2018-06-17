@@ -1,0 +1,31 @@
+#!/bin/bash
+
+REPO_PATH=$1;
+DAYS=$2;
+PUSH=$3;
+
+if [ ! -d ${REPO_PATH} ];then
+  echo ${REPO_PATH} 'is not a valid path'
+  exit
+fi
+
+if [ -n "`echo ${DAYS} | sed 's/[0-9]//g'`" ];then
+  echo ${DAYS} 'is not a valid number'
+  exit
+fi
+
+cd ${REPO_PATH}
+git status > /dev/null 2>&1
+if [ $? -ne 0 ];then
+  echo ${REPO_PATH} 'is not a valid repository'
+  exit
+fi
+for((i=0; i<=${DAYS}; i ++))
+do
+  git commit --allow-empty -m "update at `date -v-${i}d -R`" --date="`date -v-${i}d -R`"
+done
+
+if [ "${PUSH}" == "--push" ];then
+ git push
+fi
+echo -e "\n\n finished your Gitfull !!!"
