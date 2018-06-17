@@ -22,7 +22,11 @@ if [ $? -ne 0 ];then
 fi
 for((i=0; i<=${DAYS}; i ++))
 do
-  git commit --allow-empty -m "update at `date -v-${i}d -R`" --date="`date -v-${i}d -R`"
+  COUNT=$(($RANDOM%15))
+  for((c=0; c<=${COUNT}; c ++))
+  do
+    git commit --allow-empty -m "update at `date -v-${i}d -R`" --date="`date -v-${i}d -R`"
+  done
 done
 
 if [ "${PUSH}" == "--push" ];then
