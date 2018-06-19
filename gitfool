@@ -20,12 +20,15 @@ if [ $? -ne 0 ];then
   echo ${REPO_PATH} 'is not a valid repository'
   exit
 fi
+
+echo -e "\nGitfool is generating your commits, please wait...\n"
+
 for((i=0; i<=${DAYS}; i ++))
 do
   COUNT=$(($RANDOM%15))
   for((c=0; c<=${COUNT}; c ++))
   do
-    git commit --allow-empty -m "update at `date -v-${i}d -R`" --date="`date -v-${i}d -R`"
+    git commit --allow-empty -m "update at `date -v-${i}d -R`" --date="`date -v-${i}d -R`" > /dev/null 2>&1
   done
 done
 
