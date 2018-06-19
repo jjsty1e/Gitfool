@@ -2,6 +2,8 @@
 
 Gitfool (or Gitfull) is a shell command for you to fulfill your git commit log.
 
+This is the easiest way to make you a [Rockstar](https://github.com/avinassh/rockstar) Programmer ! 😅
+
 > Gitfool is a trick, take care of what you are doing.
 
 ![](gitfool.png)
