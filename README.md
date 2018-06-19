@@ -18,7 +18,7 @@ the repository path you want to add commits
 
 **days**
 
-the days you wish to add these commits
+the past days you wish to add these commits, for example : 365 means the past one year.
 
 **--push**
 
