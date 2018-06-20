@@ -25,10 +25,19 @@ echo -e "\nGitfool is generating your commits, please wait...\n"
 
 for((i=0; i<=${DAYS}; i ++))
 do
-  COUNT=$(($RANDOM%15))
+  COUNT=$(($RANDOM%2))
+
+  date -v -1d > /dev/null 2>&1
+
+  if [ $? -ne 0 ];then
+    THIS_DATE=`date -d "${i} days ago"`
+  else
+    THIS_DATE=`date -v-${i}d -R`
+  fi
+
   for((c=0; c<=${COUNT}; c ++))
   do
-    git commit --allow-empty -m "update at `date -v-${i}d -R`" --date="`date -v-${i}d -R`" > /dev/null 2>&1
+    git commit --allow-empty -m "update at ${THIS_DATE}" --date="${THIS_DATE}" > /dev/null 2>&1
   done
 done
 
