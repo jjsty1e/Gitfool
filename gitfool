@@ -25,7 +25,7 @@ echo -e "\nGitfool is generating your commits, please wait...\n"
 
 for((i=0; i<=${DAYS}; i ++))
 do
-  COUNT=$(($RANDOM%2))
+  COUNT=$(($RANDOM%15))
 
   date -v -1d > /dev/null 2>&1
 
